@@ -15,4 +15,8 @@ Route::get('/', 'LandingController@index');
 
 Auth::routes();
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'BackendController@index');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
