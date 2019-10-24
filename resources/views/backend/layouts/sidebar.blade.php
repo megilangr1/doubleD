@@ -22,17 +22,17 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="{{ url('/admin') }}" class="nav-link active">
+                <li class="nav-item has-treeview">
+                    <a href="{{ url('/admin') }}" class="nav-link {{ Request::is('admin') ? 'active':'' }}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Halaman Utama
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('admin/kategori') || Request::is('admin/gudang') || Request::is('admin/rak') ? 'menu-open':'' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -42,12 +42,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('kategori.index') }}" class="nav-link">
+                            <a href="{{ route('kategori.index') }}" class="nav-link {{ Request::is('admin/kategori') ? 'active':'' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kategori</p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview {{ Request::is('admin/gudang') || Request::is('admin/rak') ? 'menu-open':'' }}">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
@@ -57,14 +57,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('gudang.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('gudang.index') }}" class="nav-link {{ Request::is('admin/gudang') ? 'active':'' }}">
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Gudang</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('gudang.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                    <a href="{{ route('rak.index') }}" class="nav-link {{ Request::is('admin/rak') ? 'active':'' }}">
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Rak Penyimpanan</p>
                                     </a>
                                 </li>

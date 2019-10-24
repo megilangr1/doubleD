@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'BackendController@index');
     Route::resource('kategori', 'Backend\CategoryController');
     Route::resource('gudang', 'Backend\WarehouseController');
+    Route::resource('rak', 'Backend\ShelfController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -9,11 +9,14 @@
             </h4>
         </div>
         <div class="card-body">
-            <form action="{{ isset($edit) ? route('gudang.update') : route('gudang.store') }}" method="post">
+            <form action="{{ isset($edit) ? route('gudang.update', Crypt::encrypt($edit->id)) : route('gudang.store') }}" method="post">
                 @csrf
+                @if (isset($edit))
+                    @method('PUT')
+                @endif
                 <div class="form-group">
                     <label for="">Nama Gudang</label>
-                    <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }} ">
+                    <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }} " value="{{ isset($edit) ? $edit->name:'' }}">
                     <p class="text-danger">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">
