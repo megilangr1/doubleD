@@ -10,6 +10,7 @@
         </div>
         <div class="card-body">
             <form action="{{ isset($edit) ? route('gudang.update') : route('gudang.store') }}" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="">Nama Gudang</label>
                     <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }} ">
@@ -64,11 +65,11 @@
                     @forelse ($warehouses as $item)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->name }}</td>
                             <td>
                                 <form action="{{ route('gudang.destroy', Crypt::encrypt($item->id)) }}" method="post">
                                     <a href="{{ route('gudang.edit', Crypt::encrypt($item->id)) }}" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-form"></i>
+                                        <i class="fas fa-edit text-white"></i>
                                     </a>
 
                                     @csrf

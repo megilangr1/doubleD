@@ -42,9 +42,16 @@ class WarehouseController extends Controller
         ]);
 
         try {
-            $warehouses = Warehouse::firstOrCreate();
+            $warehouses = Warehouse::firstOrCreate([
+                'name' => $request->name
+            ]);
+
+            session()->flash('success', 'Data Gudang di-Tambahkan !');
+
+            return redirect(route('gudang.index'));
         } catch (\Exception $e) {
             session()->flash('error', 'Terjadi Kesalahan! Error ('.$e.')');
+            return redirect()->back();
         }
     }
 
