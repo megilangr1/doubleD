@@ -35,6 +35,11 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
     <style>
         .modal-header {
             border-top-left-radius: 0px;
@@ -43,6 +48,12 @@
         .modal-footer {
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 36px;
         }
     </style>
 
@@ -188,6 +199,8 @@
     <script src="{{ asset('backend') }}/plugins/datatables/jquery.dataTables.js"></script>
     <script src="{{ asset('backend') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
+    <!-- Select2 -->
+    <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
 
     <!-- DataTablesScript -->
     <script>
@@ -201,6 +214,19 @@
         "info": true,
         "autoWidth": false,
         });
+    });
+    </script>
+
+    <script>
+    $(function() {
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
     });
     </script>
 

@@ -15,8 +15,8 @@
                     @method('PUT')
                 @endif
                 <div class="form-group">
-                    <label for="">Nama Gudang</label>
-                    <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }} " value="{{ isset($edit) ? $edit->name:'' }}">
+                    <label for="">Nama Gudang : </label>
+                    <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }} " value="{{ isset($edit) ? $edit->name:'' }}" required="">
                     <p class="text-danger">{{ $errors->first('name') }}</p>
                 </div>
                 <div class="form-group">

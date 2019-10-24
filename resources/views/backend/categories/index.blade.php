@@ -15,7 +15,7 @@
                     @method('PUT')
                 @endif
                 <div class="form-group">
-                    <label for="">Nama Kategori</label>
+                    <label for="">Nama Kategori : </label>
                     <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}" required="" value="{{ isset($edit) ? $edit->name : '' }}" autocomplete="off">
                     <p class="text-danger">{{ $errors->first('name') }}</p>
                 </div>
