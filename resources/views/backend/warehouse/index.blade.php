@@ -58,11 +58,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
                     @forelse ($warehouses as $item)
-                        tr
+                        <tr>
+                            <td>{{ $no }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>
+                                <form action="{{ route('gudang.destroy', Crypt::encrypt($item->id)) }}" method="post">
+                                    <a href="{{ route('gudang.edit', Crypt::encrypt($item->id)) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-form"></i>
+                                    </a>
+
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @php
+                        $no++
+                    @endphp
                     @empty
                         <tr>
-                            <td colspan="3">Belum Ada Data Gudang</td>
+                            <td colspan="3" class="text-center">Belum Ada Data Gudang</td>
                         </tr>
                     @endforelse
                     </tbody>

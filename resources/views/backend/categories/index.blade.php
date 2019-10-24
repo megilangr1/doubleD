@@ -87,7 +87,7 @@
                         @endphp
                         @empty
                             <tr>
-                                <td colspan="3">Belum Ada Data Kategori</td>
+                                <td colspan="3" class="text-center">Belum Ada Data Kategori</td>
                             </tr>
                         @endforelse
                     </tbody>

@@ -37,7 +37,15 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|unique:warehouses'
+        ]);
+
+        try {
+            $warehouses = Warehouse::firstOrCreate();
+        } catch (\Exception $e) {
+            session()->flash('error', 'Terjadi Kesalahan! Error ('.$e.')');
+        }
     }
 
     /**
