@@ -32,6 +32,19 @@
 
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/toastr/toastr.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+
+    <style>
+        .modal-header {
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+        .modal-footer {
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+    </style>
 
     @yield('css')
 </head>
@@ -53,11 +66,11 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                         <i class="fas fa-th-large"></i>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -155,7 +168,40 @@
         $('.toastrDefaultWarning').click(function () {
             toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
         });
+    </script>
 
+    @if (session('success'))
+        <script>
+            toastr.success('{{ session("success") }}');
+        </script>
+    @endif
+
+
+    @if (session('error'))
+        <script>
+            toastr.error('{{ session("error") }}');
+        </script>
+    @endif
+
+
+    <!-- DataTables -->
+    <script src="{{ asset('backend') }}/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="{{ asset('backend') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+
+    <!-- DataTablesScript -->
+    <script>
+    $(function () {
+        $("#table1").DataTable();
+        $('#table2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        });
+    });
     </script>
 
     @yield('script')
